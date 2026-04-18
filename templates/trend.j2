@@ -1,0 +1,8 @@
+{% if count == 0 %}
+No trend data found for your query.
+{% else %}
+Reporting trend{% if entities.companies %} for {{ entities.companies[0] }}{% endif %}:
+{% for r in records %}
+  {{ r.year }}: {{ r.report_count }} report(s) · {{ r.unique_chemicals }} unique chemical(s) · {{ r.unique_companies }} company/companies
+{% endfor %}
+{% endif %}

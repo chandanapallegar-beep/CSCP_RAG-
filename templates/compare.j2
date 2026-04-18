@@ -1,0 +1,9 @@
+{% if count == 0 %}
+No records found for comparison.
+{% else %}
+Comparison results ({{ count }} row(s)):
+{% for r in records[:20] %}
+- {{ r.CompanyName }} — {{ r.ChemicalName }}{% if r.CasNumber %} [CAS {{ r.CasNumber }}]{% endif %}: {{ r.product_count }} product(s), first reported {{ r.first_reported }}
+{% endfor %}
+{% if count > 20 %}... and {{ count - 20 }} more.{% endif %}
+{% endif %}

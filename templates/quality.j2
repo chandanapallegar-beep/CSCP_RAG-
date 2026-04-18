@@ -1,0 +1,9 @@
+{% if count == 0 %}
+No data quality issues found.
+{% else %}
+Found {{ count }} record(s) with potential data quality issues:
+{% for r in records[:15] %}
+- [ID: {{ r.CDPHId }}] {{ r.ProductName }} ({{ r.CompanyName }}) — Chemical: {{ r.ChemicalName or 'MISSING' }}, CAS: {{ r.CasNumber or 'MISSING' }}, Reported: {{ r.InitialDateReported }}, Discontinued: {{ r.DiscontinuedDate or 'N/A' }}
+{% endfor %}
+{% if count > 15 %}... and {{ count - 15 }} more.{% endif %}
+{% endif %}

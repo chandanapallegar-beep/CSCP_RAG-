@@ -1,0 +1,9 @@
+{% if count == 0 %}
+No records found matching your query.
+{% else %}
+Found {{ count }} record(s).
+{% for r in records[:10] %}
+- {{ r.ProductName }} ({{ r.CompanyName }}) — {{ r.ChemicalName }}{% if r.CasNumber %} [CAS {{ r.CasNumber }}]{% endif %}{% if r.DiscontinuedDate %} · discontinued {{ r.DiscontinuedDate }}{% endif %} [ID: {{ r.CDPHId }}]
+{% endfor %}
+{% if count > 10 %}... and {{ count - 10 }} more records.{% endif %}
+{% endif %}

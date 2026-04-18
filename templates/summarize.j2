@@ -1,0 +1,9 @@
+{% if count == 0 %}
+No data found for your query.
+{% else %}
+Summary of {{ count }} chemical(s) reported:
+{% for r in records[:10] %}
+- {{ r.ChemicalName }}{% if r.CasNumber %} [CAS {{ r.CasNumber }}]{% endif %}: found in {{ r.product_count }} product(s) across {{ r.company_count }} company/companies. First reported: {{ r.first_reported }}.
+{% endfor %}
+{% if count > 10 %}... and {{ count - 10 }} more chemicals.{% endif %}
+{% endif %}

@@ -1,0 +1,9 @@
+{% if count == 0 %}
+No records found matching your query.
+{% else %}
+Found {{ count }} product(s).
+{% for r in records[:15] %}
+- {{ r.ProductName }} ({{ r.BrandName }}, {{ r.CompanyName }}) — {{ r.ChemicalName }} [ID: {{ r.CDPHId }}]
+{% endfor %}
+{% if count > 15 %}... and {{ count - 15 }} more. Refine your query to narrow results.{% endif %}
+{% endif %}
